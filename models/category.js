@@ -6,6 +6,7 @@ const categorySchema = new Schema({
     type: String,
     required: true,
   },
+  //one to many
   tasks: [{ type: Schema.Types.ObjectId, ref: "Task" }],
 });
 
