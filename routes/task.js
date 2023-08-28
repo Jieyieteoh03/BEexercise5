@@ -48,6 +48,7 @@ router.post("/", async (req, res) => {
     await newTask.save();
     res.status(200).send(newTask);
   } catch (error) {
+    console.log(error);
     res.status(400).send({ message: error._message });
   }
 });
@@ -74,7 +75,7 @@ router.put("/:id", async (req, res) => {
     const completedTask = await Task.findByIdAndUpdate(
       task_id,
       {
-        completed: true,
+        status: "Completed",
       },
       {
         new: true,
