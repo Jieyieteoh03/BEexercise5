@@ -80,7 +80,7 @@ router.put("/:id", async (req, res) => {
         new: true,
       }
     );
-    res.status(200).send(updatedTask);
+    res.status(200).send(completedTask);
   } catch (error) {
     res.status(400).send({ message: error._message });
   }

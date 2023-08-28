@@ -13,12 +13,16 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const newCategory = new Category({
-    name: req.body.name,
-  });
+  try {
+    const newCategory = new Category({
+      name: req.body.name,
+    });
 
-  await newCategory.save();
-  res.send(newCategory);
+    await newCategory.save();
+    res.status(200).send(newCategory);
+  } catch (error) {
+    res.status(400).send({ message: error._message });
+  }
 });
 
 module.exports = router;
